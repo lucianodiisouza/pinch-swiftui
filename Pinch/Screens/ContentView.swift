@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     // MARK: PROPERTIES
     @State private var isAnimating: Bool = false
+    @State private var imageScale: CGFloat = 1
     
     var body: some View {
         NavigationView{
@@ -22,6 +23,23 @@ struct ContentView: View {
                     .padding()
                     .shadow(color: .black.opacity(0.2), radius: 12, x: 2, y: 2)
                     .opacity(isAnimating ? 1 : 0)
+                    .scaleEffect(imageScale)
+                    // MARK: 1 - TAP GESTURE
+                    /*
+                        the count: 2 means double tap or
+                        the amount of taps needed to trigger it
+                    */
+                    .onTapGesture(count: 2, perform: {
+                        if imageScale == 1 {
+                            withAnimation(.spring()) {
+                                imageScale = 5
+                            }
+                        } else {
+                            withAnimation(.spring()) {
+                                imageScale = 1
+                            }
+                        }
+                    })
             }
             .navigationTitle("Pinch & Zoom")
             .navigationBarTitleDisplayMode(.inline)
