@@ -33,7 +33,7 @@ struct ContentView: View {
                     .opacity(isAnimating ? 1 : 0)
                     .offset(x: imageOffset.width, y: imageOffset.height)
                     .scaleEffect(imageScale)
-                    // MARK: 1 - TAP GESTURE
+                    // MARK: TAP GESTURE
                     /*
                         the count: 2 means double tap or
                         the amount of taps needed to trigger it
@@ -47,7 +47,7 @@ struct ContentView: View {
                             resetImageState()
                         }
                     })
-                // MARK: 2 - DRAG GESTURE
+                // MARK: DRAG GESTURE
                 .gesture(
                     DragGesture()
                         .onChanged{ value in
@@ -63,6 +63,7 @@ struct ContentView: View {
                         }
                 )
             }
+            // MARK: PAGE TITLE PROPERTIES
             .navigationTitle("Pinch & Zoom")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: {
